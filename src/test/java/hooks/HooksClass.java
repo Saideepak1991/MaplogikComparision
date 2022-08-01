@@ -15,10 +15,10 @@ public class HooksClass extends BaseClass {
 	@Before
 	public void openBrowser1() throws FileNotFoundException, IOException {
 		openBrowser();
-		driver.get(propRead().getProperty("student_login_url"));
+//		driver.get(propRead().getProperty("student_login_url"));
 	}
 
-	@After
+	//@After
 	public void tearDown() {
 		driver.close();
 

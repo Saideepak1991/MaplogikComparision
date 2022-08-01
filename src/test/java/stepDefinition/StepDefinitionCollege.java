@@ -9,51 +9,53 @@ import org.openqa.selenium.WebDriver;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
 import org.testng.Assert;
 
+import pageLocators.LoginExcelReadClass;
 import pageLocators.LoginPageLocator;
 
 public class StepDefinitionCollege {
 	LoginPageLocator loginPageLocator;
-
-	@Given("login with student credential {string} and {string}")
-	public void login_with_student_credential_and(String studentid, String phonenumber) {
+	LoginExcelReadClass loginexcelreadclass;
+	@Given("login with student url")
+	public void login_with_student_url() {
 		loginPageLocator = new LoginPageLocator();
-		loginPageLocator.loginstd(studentid, phonenumber);
-
+		//loginPageLocator.loginstd();
+		loginPageLocator.loadpage();
 	}
-
-
-	@Then("compare the overall position skill field with skill comparision indicator in training field in college level")
-	public void compare_the_overall_position_skill_field_with_skill_comparision_indicator_in_training_field_in_college_level() {
+	@When("login with students in {string} and skill comparision")
+	public void login_with_students_in_and_skill_comparision(String choice) {
+		loginexcelreadclass = new LoginExcelReadClass();
+		loginexcelreadclass.loginMultipleStudents(choice);
 		System.out.println("College level");
-		String overall = loginPageLocator.overallcomparisionCollege();
-		String skill = loginPageLocator.skillTrainingCollege();
-		
-		Assert.assertEquals(skill, overall, "pass");
-
+//		String overall = loginPageLocator.overallcomparisionCollege();
+//		String skill = loginPageLocator.skillTrainingCollege();
+//		Assert.assertEquals(skill, overall, "pass");
 	}
-	
-	@Then("compare the overall position skill field with skill comparision indicator in training field in district level")
-	public void compare_the_overall_position_skill_field_with_skill_comparision_indicator_in_training_field_in_district_level() {
+	@When("login with multiple students in {string} and skill comparision")
+	public void login_with_multiple_students_in_and_skill_comparision(String choice) {
+		loginexcelreadclass = new LoginExcelReadClass();
+		loginexcelreadclass.loginMultipleStudents(choice);
 		System.out.println("District level");
-		String overall =loginPageLocator.overallcomparisionDistrict();
-		String skill = loginPageLocator.skillTrainingDistrict();
-		
-		Assert.assertEquals(skill, overall, "pass"); 
+//		String overall =loginPageLocator.overallcomparisionDistrict();
+//		String skill = loginPageLocator.skillTrainingDistrict();
+	//	Assert.assertEquals(skill, overall, "pass"); 
 	}
-	
-	@Then("compare the overall position skill field with skill comparision indicator in training field in state level")
-	public void compare_the_overall_position_skill_field_with_skill_comparision_indicator_in_training_field_in_state_level() {
+	@When("login students in {string} and skill comparision")
+	public void login_students_in_and_skill_comparision(String choice) {
+		loginexcelreadclass = new LoginExcelReadClass();
+		loginexcelreadclass.loginMultipleStudents(choice);
 		System.out.println("State level");
-		String overall =loginPageLocator.overallcomparisionState();
-		String skill = loginPageLocator.skillTrainingState();
+//		String overall =loginPageLocator.overallcomparisionState();
+//		String skill = loginPageLocator.skillTrainingState();
 		
-		Assert.assertEquals(skill, overall, "pass"); 
+		//Assert.assertEquals(skill, overall, "pass"); 
 	}
 	@Then("logout dashboard")
 	public void logout_dashboard() {
-		loginPageLocator.logOut();
+		loginexcelreadclass.logOut();
 	}
 
 }

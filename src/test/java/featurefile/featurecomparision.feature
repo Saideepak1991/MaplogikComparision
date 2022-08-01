@@ -1,60 +1,25 @@
 
 @tag
-Feature: skill comparision for students 
+Feature: skill comparision for each students 
 
+  @college
+  Scenario: skill comparision in college level
   
-  Scenario Outline: skill comparision in college level
+    Given login with student url 
+    When login with students in "college" and skill comparision
+    Then logout dashboard 
+    
+     @district
+    Scenario: skill comparision in district level
   
-    Given login with student credential "<studentid>" and "<phonenumber>" 
-    Then compare the overall position skill field with skill comparision indicator in training field in college level
-    And logout dashboard
+     Given login with student url  
+     When login with multiple students in "district" and skill comparision
+     Then logout dashboard
      
-    Examples:
-    | studentid | phonenumber |
-    | 4RECSC0603 | 9092323050 |
-    | 4RECSC0602 | 9342307323 |
-    | 4RECSC0604 | 9944557479 |
-    
-  
-    Scenario Outline: skill comparision in district level
-  
-     Given login with student credential "<studentid>" and "<phonenumber>" 
-     Then compare the overall position skill field with skill comparision indicator in training field in district level
-     And logout dashboard
-    
-    Examples:
-    | studentid | phonenumber |
-    | 4RECSC0603 | 9092323050 |
-    | 4RECSC0602 | 9342307323 |
-    | 4RECSC0604 | 9944557479 |
-    
-      @tag1
-    Scenario Outline: skill comparision in state level
+   @state
+    Scenario: skill comparision in state level
    
-     Given login with student credential "<studentid>" and "<phonenumber>"  
-    Then compare the overall position skill field with skill comparision indicator in training field in state level
-    And logout dashboard
-    Examples:
-    | studentid | phonenumber |
-    | 4RECSC0603 | 9092323050 |
-    | 4RECSC0602 | 9342307323 |
-    | 4RECSC0604 | 9944557479 |
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+     Given login with student url 
+    When login students in "state" and skill comparision
+    Then logout dashboard
+   

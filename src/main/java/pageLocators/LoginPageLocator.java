@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 import basefactory.BaseClass;
+import io.cucumber.core.internal.com.fasterxml.jackson.databind.annotation.JsonAppend.Prop;
 import io.cucumber.java.Scenario;
 import utilities.Utiliesclass;
 
@@ -32,7 +33,7 @@ public class LoginPageLocator extends BaseClass {
 
 	private By submitButton = By.xpath("//button[text()='Submit']");
 
-	public static By logout = By.xpath("//*[@href='http://maplogik.com/index.php/student/logout']");
+	//public static By logout = By.xpath("//*[@href='http://maplogik.com/index.php/student/logout']");
 
 	public static By college = By.id("ovpb");
 
@@ -59,6 +60,25 @@ public class LoginPageLocator extends BaseClass {
 	public static By overallskillpointState = By.xpath("(//*[@class='digit-rating arrowBox curve-left width-two'])[3]");
 
 	public static By trainingState = By.xpath("(//*[@class='col-md-4'])[21]/p");
+	public void overallcollege() {
+		util.waitForElementClickable(college).click();
+	}
+	public void overalldistrict() {
+		util.waitForElementClickable(district).click();
+		//util.click(district);
+	}
+	public void overallstate() {
+		util.waitForElementClickable(state).click();
+	}
+	public void skillcollege() {
+		util.click(college1);
+	}
+	public void skilldistrict() {
+		util.waitForElementClickable(district1).click();
+	}
+	public void skillstate() {
+		util.waitForElementClickable(state1).click();
+	}
 
 	public void loginstd(String stdid, String phoneNumber) {
 		util.sendKey(stuId, stdid);
@@ -80,7 +100,7 @@ public class LoginPageLocator extends BaseClass {
 		return firstpoint;
 	}
 
-	public String skillTrainingCollege() {
+	public String skillTrainingCollege() {   
 		String skillTraining = util.waitForElementPresent(trainingCollege).getText();
 		// String skilltraining = util.getText(training);
 		System.out.println(skillTraining);
@@ -88,9 +108,9 @@ public class LoginPageLocator extends BaseClass {
 	}
 
 	public String overallcomparisionDistrict() {
-		util.waitForElementPresent(district);
-		// util.click(dashBoard);
-		util.click(district);
+//		util.waitForElementPresent(district);
+//		// util.click(dashBoard);
+//		util.click(district);
 		String overallskill = util.waitForElementPresent(overallskillpointDistrict).getText();
 		// String overallskill = util.getText(overallskillpoint); // 0 point
 		String[] overallskillpoint = overallskill.split(" ");
@@ -101,8 +121,8 @@ public class LoginPageLocator extends BaseClass {
 	
 
 	public String skillTrainingDistrict() {
-		util.waitForElementPresent(district1);
-		util.click(district1);
+//		util.waitForElementPresent(district1);
+//		util.click(district1);
 		String skillTraining = util.waitForElementPresent(trainingDistrict).getText();
 		// String skilltraining = util.getText(training);
 		System.out.println(skillTraining);
@@ -111,12 +131,12 @@ public class LoginPageLocator extends BaseClass {
 	}
 
 	public String overallcomparisionState() {
-		util.waitForElementPresent(district);
-		// util.click(dashBoard);
-		util.click(district);
-		String overallskill = util.waitForElementPresent(overallskillpointDistrict).getText();
+//		util.waitForElementPresent(state);
+//		// util.click(dashBoard);
+//		util.click(state);
+		String overallskill = util.waitForElementPresent(overallskillpointState).getText();
 		// String overallskill = util.getText(overallskillpoint); // 0 point
-		String[] overallskillpoint = overallskill.split(" ");
+		String[] overallskillpoint = overallskill.split(" "); 
 		String firstpoint = overallskillpoint[0];
 		System.out.println(firstpoint);
 		return firstpoint;
@@ -124,17 +144,20 @@ public class LoginPageLocator extends BaseClass {
 	
 
 	public String skillTrainingState() {
-		util.waitForElementPresent(district1);
-		util.click(district1);
-		String skillTraining = util.waitForElementPresent(trainingDistrict).getText();
+//		util.waitForElementPresent(state1);
+//		util.click(state1);
+		String skillTraining = util.waitForElementPresent(trainingState).getText();
 		// String skilltraining = util.getText(training);
 		System.out.println(skillTraining);
 		return skillTraining;
 	
 	}
-
-	public void logOut() {
-		util.click(logout);
+	public void loadpage() {
+		driver.get(prop.getProperty("student_login_url"));
 	}
+
+//	public void logOut() {
+//		util.click(logout);
+//	}
 
 }

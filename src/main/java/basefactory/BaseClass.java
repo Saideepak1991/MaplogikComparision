@@ -10,6 +10,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class BaseClass {
 	public static WebDriver driver;
+	public Properties prop;
+
+	public BaseClass() {
+		this.prop = propRead();
+	}
 
 	public void openBrowser() {
 		System.setProperty("webdriver.chrome.driver",
@@ -29,4 +34,7 @@ public class BaseClass {
 		}
 		return prop;
 	}
+//	public void tearDown() {
+//		driver.quit();
+//	}
 }
