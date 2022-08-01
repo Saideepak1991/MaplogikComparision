@@ -2,6 +2,7 @@
 @tag
 Feature: skill comparision for each students 
 
+//
   @college
   Scenario: skill comparision in college level
   
